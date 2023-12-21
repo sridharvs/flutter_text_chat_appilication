@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_text_chat_appilication/components/button.dart';
 import 'package:flutter_text_chat_appilication/components/text_field.dart';
 
-class LoginPage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  //text controller
+class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  final confirmPaswordController = TextEditingController();
 
-  //sighIn method
-  void signIn() {}
+  //signup user.. method
+  void signUp() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +43,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 // welcome text
                 const Text(
-                  "Welcome to Chat App",
+                  "Rigister here for account creation",
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -69,32 +69,41 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(
                   height: 20,
+                ), //confirm password textfield
+                MyTextField(
+                  controller: confirmPaswordController,
+                  hintText: "Confirm Password",
+                  obsureText: true,
                 ),
-                //signin button
+                const SizedBox(
+                  height: 20,
+                ),
+                //register button
                 MyButton(
-                  text: "Sign In",
-                  onTap: signIn,
+                  text: "Register Here",
+                  onTap: signUp,
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                //not logged in ? Register Here!
+                //already logged in ? login Here!
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("not register?"),
+                    const Text(
+                      "Already hava an Account?",
+                    ),
                     const SizedBox(
-                      width: 4,
+                      width: 8,
                     ),
                     GestureDetector(
                       onTap: widget.onTap,
                       child: const Text(
-                        "Register Now",
+                        "LogIn Here",
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       ),
-                    ),
+                    )
                   ],
                 )
               ],
