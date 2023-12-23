@@ -69,7 +69,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 const SizedBox(
                   height: 20,
-                ), //confirm password textfield
+                ),
+                //confirm password textfield
                 MyTextField(
                   controller: confirmPaswordController,
                   hintText: "Confirm Password",
@@ -80,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 //register button
                 MyButton(
-                  text: "Register Here",
+                  text: "Sign Up",
                   onTap: signUp,
                 ),
                 const SizedBox(
