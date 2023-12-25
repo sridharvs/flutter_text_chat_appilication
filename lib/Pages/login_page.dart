@@ -16,15 +16,25 @@ class _LoginPageState extends State<LoginPage> {
   //text controller
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  static TextEditingController confirmPaswordController =
+      TextEditingController();
 
   //user sighIn method
   void signIn() async {
+    // this if statements is not working need to improve
+    if (passwordController.text == confirmPaswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("entered Password Wrong"),
+        ),
+      );
+      return;
+    }
     final authService = Provider.of<AuthService>(context, listen: false);
     try {
-      await authService.signInWithEmailansPassword(
+      await authService.signInWithEmailAndPassword(
           emailController.text, passwordController.text);
     } catch (e) {
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(

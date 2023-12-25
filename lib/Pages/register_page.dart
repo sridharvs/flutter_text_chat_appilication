@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_chat_appilication/components/button.dart';
 import 'package:flutter_text_chat_appilication/components/text_field.dart';
+import 'package:flutter_text_chat_appilication/services/auth/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -13,10 +16,38 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPaswordController = TextEditingController();
+  static TextEditingController confirmPaswordController =
+      TextEditingController();
 
   //signup user.. method
-  void signUp() {}
+  Future<void> signUp() async {
+    if (passwordController.text != confirmPaswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Password doesn't Match"),
+        ),
+      );
+      return;
+    }
+
+    //get auth sevice
+    final authService = Provider.of<AuthService>(context, listen: false);
+    try {
+      await authService.signUpwithemailAndPassword(
+        emailController.text,
+        passwordController.text,
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.toString(),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
