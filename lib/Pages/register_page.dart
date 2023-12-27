@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_text_chat_appilication/components/button.dart';
 import 'package:flutter_text_chat_appilication/components/text_field.dart';

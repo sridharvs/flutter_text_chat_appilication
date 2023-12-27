@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_text_chat_appilication/firebase_options.dart';
 import 'package:flutter_text_chat_appilication/services/auth/auth_gate.dart';
 import 'package:flutter_text_chat_appilication/services/auth/auth_service.dart';
-import 'package:flutter_text_chat_appilication/services/auth/login_or_register.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
